@@ -15,20 +15,29 @@ normal build
 test run: converts src/test/resources/input.log input file and saves processed output into ./new_testdb1/new_output.csv file
 ```
 ./gradlew run --args="-i src/test/resources/input.log  -o new_output.csv -wd jdbc:hsqldb:file:new_testdb1/sampledb;shutdown=true"
-cat ./new_testdb1/new_output.csv
 ```
 
-# build standalone jar 
+check output file
+```
+cat ./new_testdb1/new_output.csv
+```
+```
+a,5,APPLICATION_LOG,12345,true
+b,3,,,false
+c,8,,,true
+```
+
+build standalone jar 
 ```
 ./gradlew standaloneJar
 ```
 
-# run with custom-settings, like JVM maximum heap size or other options. Avaliable application-level settings are below
+run with custom-settings, like JVM maximum heap size or other options. Avaliable application-level settings are below
 ```
 java -Xmx8192m -jar build/libs/CsaEventProcessorStandalone-1.0-SNAPSHOT.jar -i src/test/resources/input.log  -o new_output.csv -wd jdbc:hsqldb:file:new_testdb1/sampledb;shutdown=true 
 ```
 
-# avaliable options
+avaliable options
 
 ```
 usage: CsaEventProcessor
